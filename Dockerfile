@@ -1,6 +1,8 @@
 FROM php:7.4-fpm-alpine
 
 RUN apk --update add --no-cache \
+    $PHPIZE_DEPS \
+    bash \
     oniguruma-dev \
     libpng-dev \
     openssl-dev \
@@ -11,7 +13,18 @@ RUN apk --update add --no-cache \
     libxml2-dev \
     postgresql-dev \
     git \
+    \
     && rm -rf /var/cache/apk/*
+
+RUN pecl install xdebug \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.idekey=api.raxadinha.dev" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install \
         pdo \

@@ -2,8 +2,11 @@ version: '3'
 services:
   api.raxadinha.dev:
     container_name: api.raxadinha.dev
+    image: lucianoajunior/api.raxadinha.dev:latest
     build:
       context: .
+      args:
+        APP_ENV: local
     volumes:
       - ./src:/app
     ports:

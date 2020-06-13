@@ -1,9 +1,8 @@
 # Raxadinha
 
 <p align="left">
-    <a href="https://cloud.drone.io/lucianocarvalho/raxadinha">
-        <img src="https://cloud.drone.io/api/badges/lucianocarvalho/raxadinha/status.svg" />
-    </a>
+    <a href="https://cloud.drone.io/lucianocarvalho/raxadinha"><img src="https://cloud.drone.io/api/badges/lucianocarvalho/raxadinha/status.svg" /></a>
+    <a href="https://codecov.io/gh/lucianocarvalho/raxadinha"><img src="https://codecov.io/gh/lucianocarvalho/raxadinha/branch/master/graph/badge.svg" /></a>
 </p>
 
 Raxadinha is a API REST in PHP created to help people to easily split bills and expenses with friends, partner, housemates or anyone interested. You can record debts, calculate total payments and simplify your budget.
@@ -13,6 +12,7 @@ Raxadinha is a API REST in PHP created to help people to easily split bills and 
 ## Table of contents:
 * **[About](#about)**
 * **[Installation](#installation)**
+* **[Tests](#tests)**
 * **[Documentation](#documentation)**
 * **[Bugs and features](#bugs-and-features)**
 * **[License](#license)**
@@ -57,15 +57,27 @@ $ docker exec -ti api.raxadinha.dev php artisan migrate
 
 # If you want, run the seeds
 $ docker exec -ti api.raxadinha.dev php artisan db:seed
-
-# Run the tests
-$ docker exec -ti api.raxadinha.dev ./vendor/bin/phpunit
 ```
 
 #### Deploy on Kubernetes:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/lucianocarvalho/raxadinha/k8s/deployment.yaml
 ```
+
+## Tests
+
+```bash
+# Run tests
+$ docker exec -ti api.raxadinha.dev ./vendor/bin/phpunit --no-coverage
+
+# Run coverage report
+$ docker exec -ti api.raxadinha.dev ./vendor/bin/phpunit --coverage-html public/coverage-report
+
+# Run coverage clover
+$ docker exec -ti api.raxadinha.dev ./vendor/bin/phpunit --coverage-clover=coverage.xml
+```
+
+Open **[http://localhost:9002/coverage-report/index.html](http://localhost:9002/coverage-report/index.html)** in your browser.
 
 ## Documentation
 

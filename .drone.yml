@@ -24,4 +24,13 @@ steps:
     image: lucianoajunior/api.raxadinha.dev:latest
     commands:
       - cd src
-      - ./vendor/bin/phpunit
+      - ./vendor/bin/phpunit --no-coverage
+  - name: coverage-tests
+    pull: if-not-exists
+    image: lucianoajunior/api.raxadinha.dev:latest
+    environment:
+      CODECOV_TOKEN: ec5fa15a-b131-41cb-94f5-e43b71c37618
+    commands:
+      - cd src
+      - ./vendor/bin/phpunit --coverage-clover=coverage.xml
+      - curl -s https://codecov.io/bash | bash -s --
