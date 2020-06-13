@@ -1,0 +1,18 @@
+version: '3'
+services:
+  api.raxadinha.dev:
+    container_name: api.raxadinha.dev
+    build:
+      context: .
+    volumes:
+      - ./src:/app
+    ports:
+      - "9002:80"
+
+  db.raxadinha.dev:
+    container_name: db.raxadinha.dev
+    build:
+      context: ./docker/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped

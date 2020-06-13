@@ -1,0 +1,3 @@
+CREATE USER docker;
+CREATE DATABASE raxadinha;
+GRANT ALL PRIVILEGES ON DATABASE raxadinha TO docker;
