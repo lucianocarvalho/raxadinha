@@ -1,0 +1,27 @@
+kind: pipeline
+name: default
+type: docker
+trigger:
+  event:
+    - pull_request
+    - push
+  branch:
+    - master
+platform:
+  os: linux
+  arch: amd64
+steps:
+  - name: install-dependencies
+    pull: if-not-exists
+    image: lucianoajunior/api.raxadinha.dev:latest
+    commands:
+      - apk --update add --no-cache git
+      - cd src
+      - composer install --prefer-dist --no-suggest
+      - mv .env.example .env
+  - name: unit-tests
+    pull: if-not-exists
+    image: lucianoajunior/api.raxadinha.dev:latest
+    commands:
+      - cd src
+      - ./vendor/bin/phpunit
