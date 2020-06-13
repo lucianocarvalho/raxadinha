@@ -1,5 +1,11 @@
 # Raxadinha
 
+<p align="left">
+    <a href="https://cloud.drone.io/lucianocarvalho/raxadinha">
+        <img src="https://cloud.drone.io/api/badges/lucianocarvalho/raxadinha/status.svg" />
+    </a>
+</p>
+
 Raxadinha is a API REST in PHP created to help people to easily split bills and expenses with friends, partner, housemates or anyone interested. You can record debts, calculate total payments and simplify your budget.
 
 > Raxadinha comes from the brazilian verb **rachar**, that means, in a informal dictionary, divide something proportionally between several people or share something.
