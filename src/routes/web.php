@@ -18,4 +18,5 @@ $router->get('/', function () use ($router) {
 $router->get('/api/users', 'UserController@index');
 $router->post('/api/register', 'UserController@create');
 $router->post('/api/login', 'UserController@login');
-$router->get('/api/groups/{user_id}', 'GroupController@index');
+
+$router->get('/api/groups/{user_id}', 'GroupController@getGroupsByUser');

@@ -4,14 +4,11 @@ namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Transaction extends Model
 {
     protected $fillable = [
         'name',
-        'email',
-    ];
-
-    protected $hidden = [
-        'password',
+        'value',
+        'description'
     ];
 }

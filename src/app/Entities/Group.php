@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     protected $fillable = [
-        'name', 'expire_at'
+        'name',
+        'user_id'
     ];
 
     public function users()
     {
-        return $this->belongsToMany(\App\Entities\User::class);
+        return $this->belongsToMany('App\Entities\User');
     }
 }

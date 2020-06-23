@@ -1,9 +1,8 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-
-use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +15,15 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(\App\Entities\Transaction::class, function (Faker $faker) {
+
+    $groupsIds = \App\Entities\Group::pluck('id')->toArray();
+    $usersIds = \App\Entities\User::pluck('id')->toArray();
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'group_id' => $groupsIds[array_rand($groupsIds)],
+        'user_id' => $usersIds[array_rand($usersIds)],
+        'value' => $faker->randomFloat(),
+        'description' => $faker->text,
     ];
 });

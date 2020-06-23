@@ -15,11 +15,6 @@ class UserController extends Controller
         $this->repository = $repository;
     }
 
-    public function index(Request $request)
-    {
-        return response($this->repository->getAll($request), 200);
-    }
-
     public function create(Request $request)
     {
         if ($this->repository->create($request->except('q'))) {
