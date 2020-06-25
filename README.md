@@ -61,7 +61,7 @@ $ docker exec -ti api.raxadinha.dev php artisan db:seed
 
 #### Deploy on Kubernetes:
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/lucianocarvalho/raxadinha/k8s/deployment.yaml
+kubectl apply -f kubernetes/raxadinha.yaml
 ```
 
 ## Tests
