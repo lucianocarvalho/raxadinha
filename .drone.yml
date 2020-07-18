@@ -11,11 +11,10 @@ platform:
   os: linux
   arch: amd64
 steps:
-  - name: install-dependencies
+  - name: prepare-dependencies
     pull: if-not-exists
     image: lucianoajunior/api.raxadinha.dev:latest
     commands:
-      - apk --update add --no-cache git
       - cd src
       - composer install --prefer-dist --no-suggest
       - mv .env.example .env
