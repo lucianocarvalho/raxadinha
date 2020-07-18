@@ -32,7 +32,8 @@ However, to easily setup it locally you will need:
 
 | Container             | About                | Port |
 |-----------------------|----------------------|------|
-| **api.raxadinha.dev** | `php:7.4-fpm-alpine` | 9002 |
+| **nginx.raxadinha.dev** | `nginx:1.17.9` | 80 |
+| **api.raxadinha.dev** | `php:7.4-fpm-alpine` | - |
 | **db.raxadinha.dev**  | `postgres`           | 5432 |
 
 ## Installation
@@ -77,7 +78,7 @@ $ docker exec -ti api.raxadinha.dev ./vendor/bin/phpunit --coverage-html public/
 $ docker exec -ti api.raxadinha.dev ./vendor/bin/phpunit --coverage-clover=coverage.xml
 ```
 
-Open **[http://localhost:9002/coverage-report/index.html](http://localhost:9002/coverage-report/index.html)** in your browser.
+Open **[http://localhost/coverage-report/index.html](http://localhost/coverage-report/index.html)** in your browser.
 
 ## Documentation
 
@@ -88,7 +89,7 @@ Generate the documentation:
 $ docker exec -ti api.raxadinha.dev ./vendor/bin/openapi ./app/ --output public/openapi/openapi.json
 ```
 
-Open **[http://localhost:9002/openapi/redoc.html](http://localhost:9002/openapi/redoc.html)** in your browser.
+Open **[http://localhost/openapi/redoc.html](http://localhost/openapi/redoc.html)** in your browser.
 
 ## Bugs and features:
 
