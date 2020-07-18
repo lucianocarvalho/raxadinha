@@ -1,16 +1,25 @@
 version: '3'
 services:
-  api.raxadinha.dev:
+  app:
     container_name: api.raxadinha.dev
-    image: lucianoajunior/api.raxadinha.dev:latest
     build:
       context: .
       args:
         APP_ENV: local
     volumes:
       - ./src:/app
+
+  web:
+    container_name: nginx.raxadinha.dev
+    image: nginx:1.17.9
+    working_dir: /app
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - app
     ports:
-      - "9002:80"
+      - "80:80"
+      - "443:443"
 
   db.raxadinha.dev:
     container_name: db.raxadinha.dev
